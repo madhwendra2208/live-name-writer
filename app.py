@@ -71,7 +71,7 @@ def oauth2callback():
         client_config(), scopes=SCOPES, state=session.get("oauth_state")
     )
     flow.redirect_uri = redirect_uri()
-    flow.fetch_token(authorization_response=request.url)
+    flow.fetch_token(authorization_response=request.url.replace("http://", "https://", 1))
     save_creds(flow.credentials)
     return "YouTube connected successfully. You can return to PRISM."
 
