@@ -89,7 +89,7 @@ def names():
                 if not STATE["chat_id"]:
                     broadcasts = svc.liveBroadcasts().list(
                         part="id,snippet,contentDetails,status",
-                        broadcastStatus="active", mine=True, maxResults=5
+                        broadcastStatus="active", maxResults=5
                     ).execute()
                     for item in broadcasts.get("items", []):
                         chat_id = item.get("snippet", {}).get("liveChatId")
